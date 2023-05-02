@@ -5,6 +5,7 @@ import { RootState } from '../Redux/Store';
 import { ContactsType } from '../utils/Types';
 import ContactInput from '../Componunts/ContactInput';
 import ContactUpdate from '../Componunts/ContactUpdate';
+import { MdDeleteForever,MdOutlineModeEditOutline } from "react-icons/md";
 
 const ContactPage = () => {
  const [count,setCount] = useState(0)
@@ -25,25 +26,45 @@ useEffect(()=>{
 
 
   return (
-    <div>
+    <div className='p-10'>
       <ContactInput handelSubmit={handelSubmit} /> 
-      <h1> Contact page</h1>
-       <h2>Update</h2>
-       <ContactUpdate/>
-      <div>
+
+       Updates
+       {/* <ContactUpdate/> */}
+      <div className='grid grid-cols-4 gap-3 w-fit  m-auto'>
        {
         data && data?.map((ele,i)=>{
           return(
-            <div key={i} style={{border:'1px solid',width:'300px'}}>
-              <h3>Name:{ele.first_name}</h3>
-              <h3>Status:{ele.status}</h3>
-              <button onClick={()=>dispatch(updateContact(ele.id))} >Edit</button>
-              <button onClick={()=>dispatch(deleteContact(ele.id))}>Delete</button>
+            <div key={i} className=' border-dotted border-2 border-black w-fit p-5 rounded-md'>
+              <div className='flex gap-5 items-center border-dashed '>
+                <img className='w-12' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODZob7ROpqlx8WXwjueNwTOlC6Qum-yMiyfXiFRXkdhkHgybCpdvM1UpaXCL1ycfO8NI&usqp=CAU" alt="user" />
+                <div>
+                <p className='font-bold'>{ele.first_name} {ele.last_name}</p>
+                <p>Status: {ele.status}</p>
+                </div>
+                  
+              </div>
+            
+               <div className='flex gap-2 mt-1'>
+                 <button className='bg-blue-500 w-fit text-white m-auto py-1 px-3 text-lg font-semibold rounded-md' onClick={()=>dispatch(updateContact(ele.id))} >
+                 <div className='flex gap-1 items-center'>
+                   <MdOutlineModeEditOutline/> Delete
+                   </div>
+                  </button>
+
+                <button className='bg-red-500 w-fit text-white m-auto py-1 px-3 text-lg font-semibold rounded-md ' onClick={()=>dispatch(deleteContact(ele.id))}> 
+                    <div className='flex gap-1 items-center'>
+                    <MdDeleteForever/> Delete
+                    </div>
+                </button>
+               </div>
+
             </div>
           )
         })
        }
       </div>
+      ....................................
     </div>
   )
 }
