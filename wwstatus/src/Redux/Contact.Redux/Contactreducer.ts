@@ -28,6 +28,20 @@ export const ContactReducer = (state:ContactState=initialvalue,{type,payload}:Ac
                 contact:[...state.contact,payload]
             }
         }
+        case UPDATECONTACT: {
+           console.log(payload)
+           return state;
+        }
+
+        case DELETECONTACT: {
+            let newData = state.contact.filter((ele)=>ele.id!==payload)
+            console.log(newData)
+            return {
+                ...state,
+                contact:newData
+            }
+         }
+
 
         default:{
             return state;

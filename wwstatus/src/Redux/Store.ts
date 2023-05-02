@@ -8,8 +8,11 @@ declare global {
       }
     }
 
+export type RootState = ReturnType<typeof Store.getState>
+
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__||compose;
 
 export const Store = legacy_createStore(ContactReducer,composeEnhancer())
 
+export type AppDispatch = typeof Store.dispatch;
 
