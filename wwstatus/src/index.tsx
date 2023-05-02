@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {QueryClientProvider,QueryClient} from 'react-query';
+import { Provider } from 'react-redux';
+import { Store } from './Redux/Store';
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(
@@ -12,7 +14,9 @@ const root = ReactDOM.createRoot(
 root.render(
 
    <QueryClientProvider client={queryClient}>
-     <App />
+    <Provider store={Store}>
+           <App />
+    </Provider>
    </QueryClientProvider>
 
 );

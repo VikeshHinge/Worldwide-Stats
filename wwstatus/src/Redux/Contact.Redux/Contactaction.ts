@@ -1,5 +1,5 @@
-import {GETALLCONTACT,ADDCONTACT,UPDATECONTACT,DELETECONTACT} from './Contact.type.js';
-import { ContactsType } from '../../utils/Types.js';
+import {GETALLCONTACT,ADDCONTACT,UPDATECONTACT,DELETECONTACT} from './Contacttype';
+import { ContactsType } from '../../utils/Types';
 
 export const getContact = ()=> ({type:GETALLCONTACT})
 export const addContact = (contact:ContactsType) => ({type:ADDCONTACT,payload:contact})

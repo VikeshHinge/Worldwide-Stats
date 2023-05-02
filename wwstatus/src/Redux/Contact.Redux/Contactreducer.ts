@@ -1,5 +1,5 @@
-import { ContactsType } from '../../utils/Types.js';
-import {GETALLCONTACT,ADDCONTACT,UPDATECONTACT,DELETECONTACT} from './Contact.type.js';
+import { ContactsType } from '../../utils/Types';
+import {GETALLCONTACT,ADDCONTACT,UPDATECONTACT,DELETECONTACT} from './Contacttype';
 
 type ContactState = {
     contact:ContactsType[];
@@ -14,7 +14,7 @@ let initialvalue:ContactState ={
     contact:[]
 }
 
-export const ContactReducer = (state:ContactState=initialvalue,{type,payload}:Actiontype) => {
+export const ContactReducer = (state:ContactState=initialvalue,{type,payload}:Actiontype):ContactState => {
         
       switch(type){
 
